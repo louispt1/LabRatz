@@ -35,9 +35,6 @@ function draw() {
   background(0);
   entryScreen();
   nextScreen();
- 
- 
-
 }
 
 function mouseClicked() {
@@ -133,7 +130,7 @@ function CheckPassword(inputtxt) {
       noStroke();
       
       if (beige) {
-      fill(186,179,156); // beige
+      fill(211,205,184); // beige
       rect(0,50,width,height);
       quad(0,50, 30,0, 120,0, 150,50);
       fill(0);
@@ -141,7 +138,7 @@ function CheckPassword(inputtxt) {
       textAlign(CENTER);
       textSize(16);
       text("Timings", 75, 30);
-      fill(157,156,98); // light olive
+      fill(223,217,196); // light olive
       quad(150,50, 180,0, 270,0, 300,50);
       fill(0);
       text("Notes", 225, 30);
@@ -164,18 +161,18 @@ function CheckPassword(inputtxt) {
       push();
       //Time 4
       translate(0,500);
-      makeBars(average4, time4-time3, exp4); //  left top
+      makeBars(average4-1500000, time4-1500000, exp4); //  left top
        
       //Time 5
       translate(650,0);
-      makeBars(average5, time5-time4, exp5); // center top 
+      makeBars(average5-1500000, time5-1500000, exp5); // center top 
       
       //Time 6
       translate(650,0);
-      makeBars(average6, time6-time5, exp6); // right top 
+      makeBars(average6, time6-time3, exp6); // right top 
       pop();
       } else {
-        fill(157,156,98); //olive tab
+        fill(223,217,196); //olive tab
         rect(0,50,width,height);
         quad(150,50, 180,0, 270,0, 300,50);
         fill(0);
@@ -183,7 +180,7 @@ function CheckPassword(inputtxt) {
         textAlign(CENTER);
         textSize(16);
         text("Notes", 225, 30);
-        fill(186,179,156); // beige tab
+        fill(211,205,184); // beige tab
         quad(0,50, 30,0, 120,0, 150,50);
         fill(0);
         text("Timings", 75, 30);
@@ -194,7 +191,7 @@ function CheckPassword(inputtxt) {
         text("Notes:", 100 , 150); // big notes
 
         push();
-        let a = "I have been performing experiments on lab rats for some time. Not all of the experiments have been successful, I must say, and sometimes my assistants have questioned me - they think what i am doing is unethical, that this experiment lacks 'scientific rigour'. I'll show them. This latest experiment is my finest yet. The rats will think they are escaping, each barrier to their exit they overcome indicates a higher level of their desire for freedom.";
+        let a = "I have been performing experiments on lab rats for some time. Not all of the experiments have been successful, I must say, and sometimes my assistants have questioned me - they think what I am doing is unethical, that this experiment lacks 'scientific rigour'. I'll show them. This latest experiment is my finest yet. The rats will think they are escaping, each barrier to their exit they overcome indicates a higher level of their desire for freedom.";
         let b = "But, they will never truly escape, my trusty assistants will make sure of that. The assistants will record the time it takes this set of rats to complete each challenge as they try to escape. Once they have reached the final stage my assistants will incinerate the rats before bringing the next batch in to repeat the experiment.";
         let c = "I hope this is the experiment that makes me famous, then I can finally get the recognition I deserve for my efforts to uncover the secrets of nature.";
         textStyle(NORMAL);
@@ -261,6 +258,12 @@ function CheckPassword(inputtxt) {
   function getTime(milliseconds) {
     let secs = ceil(milliseconds/1000) % 60;
     let mins = floor(milliseconds/(1000*60));
+
+    if (milliseconds < 0) {
+      print('check');
+      return "under 25 minutes by " +Math.abs(mins)-1+ " minutes and " +(60+secs)+" seconds";
+    }
+
     return mins + " minutes and " + secs+" seconds";
   }
 
@@ -268,23 +271,23 @@ function CheckPassword(inputtxt) {
     average1 = 1000*60*3; // average 1 is 3 minutes atm
     average2 = 1000*60*5; // average 2 is 5 minutes atm
     average3 = 1000*60*5; // average 3 is 5 minutes atm
-    average4 = 1000*60*20; // average 4 is 10 minutes atm
-    average5 = 1000*60*5; // average 5 is 5 minutes atm
+    average4 = 1000*60*35; // average 4 is 35 minutes atm
+    average5 = 1000*60*35; // average 5 is 35 minutes atm
     average6 = 1000*60*5; // average 6 is 5 minutes atm
   }
 
   function setExperimentNames() {
-    exp1 = "First coin inserted:";
-    exp2 = "Second coin inserted:";
-    exp3 = "Third coin inserted:";
+    exp1 = "Whiteboard message decrypted:";
+    exp2 = "Rube Goldberg machine deployed:";
+    exp3 = "Escaped from the maze:";
     exp4 = "Pavlovian puzzle completed:";
-    exp5 = "Found blacklight torch:";
+    exp5 = "Blacklight torch found:";
     exp6 = "Password input in computer:";
   }
 
   function makeBars(average, time, exp) {
     push();
-    scale(2);0123456
+    scale(2);
     stroke(0);
     translate(50,175);
     let avgHeight = (-6*average/60000)+10;
@@ -301,7 +304,7 @@ function CheckPassword(inputtxt) {
 
     stroke(0);
     line(0,0,150,0); //baseline
-    fill(95,85,102); // Average bar colour
+    fill(21,59,80); // Average bar colour
     rect(25,0,35,avgHeight); // Average bar
   
     if (betterThanAvg(average, time)) {
