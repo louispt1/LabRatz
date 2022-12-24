@@ -56,24 +56,24 @@ function popLetters() {
   push();
   translate(0,13);
   textStyle(BOLD);
-  textSize(35);
+  textSize(38);
   if (mouseX <= 785 && mouseX >= 777 && mouseY <= 296 && mouseY >= 275) {
     text("f", 781,285);
-  } else if (mouseX <= 118 && mouseX >= 110 && mouseY <= 294 && mouseY >= 275) {
+  } else if (mouseX <= 122 && mouseX >= 108 && mouseY <= 294 && mouseY >= 275) {
     text("i", 114,286);
-  } else if (mouseX <= 1136 && mouseX >= 1128 && mouseY <= 531 && mouseY >= 511) {
+  } else if (mouseX <= 1144 && mouseX >= 1124 && mouseY <= 531 && mouseY >= 511) {
     text("r", 1132, 521);
-  } else if (mouseX <= 536 && mouseX >= 528 && mouseY <= 221 && mouseY >= 201) {
+  } else if (mouseX <= 540 && mouseX >= 524 && mouseY <= 221 && mouseY >= 201) {
     text("e", 532,211);
-  } else if (mouseX <= 1259 && mouseX >= 1249 && mouseY <= 393 && mouseY >= 373) {
+  } else if (mouseX <= 1263 && mouseX >= 1245 && mouseY <= 393 && mouseY >= 373) {
     text("a", 1254,383);
-  } else if (mouseX <= 640 && mouseX >= 630 && mouseY <= 221 && mouseY >= 201) {
+  } else if (mouseX <= 644 && mouseX >= 625 && mouseY <= 221 && mouseY >= 201) {
     text("l", 635, 211);
-  } else if (mouseX <= 268 && mouseX >= 258 && mouseY <= 570 && mouseY >= 550) {
+  } else if (mouseX <= 272 && mouseX >= 254 && mouseY <= 570 && mouseY >= 550) {
     text("a", 263, 560);
-  } else if (mouseX <= 109 && mouseX >= 99 && mouseY <= 430 && mouseY >= 410) {
+  } else if (mouseX <= 113 && mouseX >= 95 && mouseY <= 430 && mouseY >= 410) {
     text("r", 104, 420);
-  } else if (mouseX <= 1374 && mouseX >= 1364 && mouseY <= 430 && mouseY >= 410) {
+  } else if (mouseX <= 1378 && mouseX >= 1360 && mouseY <= 430 && mouseY >= 410) {
     text("m", 1369, 420);
   }
    pop();
