@@ -23,68 +23,84 @@ let exp6;
 let overallTimeTaken;
 let beige = true;
 let time6Check = true;
+let escaped = false;
+let incinerate = false;
+let escapeImage;
+let incinerateImage;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
   inputElem = createInput('');
   setAverages();
   setExperimentNames();
+  escapeImage = loadImage('assets/escapePic.png');
+  incinerateImage = loadImage('assets/incineratedPic.png')
 }
 
 function draw() {
   background(0);
   entryScreen();
   nextScreen();
+  finalScreen();
 }
 
 function mouseClicked() {
-
-  // console.log("mouse x:      "+mouseX);
-  // console.log("mouse y:      "+mouseY);
 
 if (secondScreen) {
   if (mouseX < 150 && mouseY < 50) { // beige tab
     beige = true; 
   } else if (mouseX < 300 && mouseY < 50) {
     beige = false;
+    }
+    if (mouseY < 900 && mouseY > 700) {
+      if (mouseX < 500 && mouseX > 300) {
+        escaped = true;
+        secondScreen = false;
+      } else if (mouseX < 900 && mouseX > 700) {
+        incinerate = true;
+        secondScreen = false;
+      }
   }
-
 }
 }
 
-function popLetters() {
-  push();
-  translate(0,13);
-  textStyle(BOLD);
-  textSize(38);
-  if (mouseX <= 785 && mouseX >= 777 && mouseY <= 296 && mouseY >= 275) {
-    text("f", 781,285);
-  } else if (mouseX <= 122 && mouseX >= 108 && mouseY <= 294 && mouseY >= 275) {
-    text("i", 114,286);
-  } else if (mouseX <= 1144 && mouseX >= 1124 && mouseY <= 531 && mouseY >= 511) {
-    text("r", 1132, 521);
-  } else if (mouseX <= 540 && mouseX >= 524 && mouseY <= 221 && mouseY >= 201) {
-    text("e", 532,211);
-  } else if (mouseX <= 1263 && mouseX >= 1245 && mouseY <= 393 && mouseY >= 373) {
-    text("a", 1254,383);
-  } else if (mouseX <= 644 && mouseX >= 625 && mouseY <= 221 && mouseY >= 201) {
-    text("l", 635, 211);
-  } else if (mouseX <= 272 && mouseX >= 254 && mouseY <= 570 && mouseY >= 550) {
-    text("a", 263, 560);
-  } else if (mouseX <= 113 && mouseX >= 95 && mouseY <= 430 && mouseY >= 410) {
-    text("r", 104, 420);
-  } else if (mouseX <= 1378 && mouseX >= 1360 && mouseY <= 430 && mouseY >= 410) {
-    text("m", 1369, 420);
-  }
-   pop();
-}
+// function popLetters() {
+//   push();
+//   translate(0,13);
+//   textStyle(BOLD);
+//   textSize(38);
+//   if (mouseX <= 785 && mouseX >= 777 && mouseY <= 296 && mouseY >= 275) {
+//     text("f", 781,285);
+//   } else if (mouseX <= 122 && mouseX >= 108 && mouseY <= 294 && mouseY >= 275) {
+//     text("i", 114,286);
+//   } else if (mouseX <= 1144 && mouseX >= 1124 && mouseY <= 531 && mouseY >= 511) {
+//     text("r", 1132, 521);
+//   } else if (mouseX <= 540 && mouseX >= 524 && mouseY <= 221 && mouseY >= 201) {
+//     text("e", 532,211);
+//   } else if (mouseX <= 1263 && mouseX >= 1245 && mouseY <= 393 && mouseY >= 373) {
+//     text("a", 1254,383);
+//   } else if (mouseX <= 644 && mouseX >= 625 && mouseY <= 221 && mouseY >= 201) {
+//     text("l", 635, 211);
+//   } else if (mouseX <= 272 && mouseX >= 254 && mouseY <= 570 && mouseY >= 550) {
+//     text("a", 263, 560);
+//   } else if (mouseX <= 113 && mouseX >= 95 && mouseY <= 430 && mouseY >= 410) {
+//     text("r", 104, 420);
+//   } else if (mouseX <= 1378 && mouseX >= 1360 && mouseY <= 430 && mouseY >= 410) {
+//     text("m", 1369, 420);
+//   }
+//    pop();
+// }
 
 function CheckPassword(inputtxt) { 
   let passw = "VibvealHeariumLiefliteChatfril";
   let passw2 = "Vibvealheariumlieflitechatfril";
   let passw3 = "vibvealheariumlieflitechatfril";
+  let passw4 = "vibveal hearium lieflite chatfril";
+  let passw5 = "Vibveal Hearium Lieflite Chatfril";
+  let passw6 = "vib veal hea rium lief lite chat fril";
+  let passw7 = "Vib veal Hea rium Lief lite Chat fril";
   let pass4 = "root";
-  if(inputtxt == passw || inputtxt == passw2 || inputtxt == passw3 || inputtxt == pass4) { 
+  if(inputtxt == passw || inputtxt == passw2 || inputtxt == passw3 || inputtxt == pass4 || inputtxt == passw5 || inputtxt == passw6 || inputtxt == passw7 || inputtxt == passw4) { 
     return true;
     } else { 
   return false;
@@ -120,7 +136,6 @@ function CheckPassword(inputtxt) {
   }
 
   function nextScreen() {
-    
     if (secondScreen) {
       background(200);
       if (time6Check) {
@@ -155,21 +170,21 @@ function CheckPassword(inputtxt) {
       
       //Time 3
       translate(650,0);
-      makeBars(average3, time3-time2, exp3); // right top 
+      makeBars(average3*0.5, (time3-time2)*0.5, exp3); // right top 
       pop();
 
       push();
       //Time 4
       translate(0,500);
-      makeBars(average4-1500000, time4-1500000, exp4); //  left top
+      makeBars(average4-(1500000*1.8), time4-1500000, exp4); //  left top
        
       //Time 5
       translate(650,0);
-      makeBars(average5-1500000, time5-1500000, exp5); // center top 
+      makeBars(average5-(1500000*1.8), time5-1500000, exp5); // center top 
       
       //Time 6
       translate(650,0);
-      makeBars(average6, time6-time3, exp6); // right top 
+      makeBars(average6*0.5, (time6-time3)*0.5, exp6); // right top 
       pop();
       } else {
         fill(223,217,196); //olive tab
@@ -200,11 +215,35 @@ function CheckPassword(inputtxt) {
         text(b, 100, 370, width-200);
         text(c, 100, 510, width-200);
         textWrap(WORD);
+
+        fill(92, 174,38); //green
+        rect(300,700,200);
+        fill(194,41,41); //red
+        rect(700,700,200);
+        textAlign(CENTER);
+        fill(255);
+        text("Release rats", 400, 800);
+        text("Incinerate", 800, 800);
+
         pop();
 
-        popLetters();
+        //popLetters();
       }
      
+    }
+  }
+
+  function finalScreen() {
+    if (escaped || incinerate) {
+      background(255);
+      if (escaped) {
+        image(escapeImage,0,0);
+      } 
+      if (incinerate) {
+        image(incinerateImage,0,0);
+      }
+
+
     }
   }
 
@@ -268,16 +307,16 @@ function CheckPassword(inputtxt) {
   }
 
   function setAverages() {
-    average1 = 1000*60*3; // average 1 is 3 minutes atm
+    average1 = 1000*60*5; // average 1 is 5 minutes atm
     average2 = 1000*60*5; // average 2 is 5 minutes atm
-    average3 = 1000*60*5; // average 3 is 5 minutes atm
-    average4 = 1000*60*35; // average 4 is 35 minutes atm
-    average5 = 1000*60*35; // average 5 is 35 minutes atm
-    average6 = 1000*60*5; // average 6 is 5 minutes atm
+    average3 = 1000*60*15; // average 3 is 5 minutes atm
+    average4 = 1000*60*50; // average 4 is 35 minutes atm
+    average5 = 1000*60*45; // average 5 is 35 minutes atm
+    average6 = 1000*60*20; // average 6 is 5 minutes atm
   }
 
   function setExperimentNames() {
-    exp1 = "Whiteboard message decrypted:";
+    exp1 = "Whiteboard message decrypted:"; 
     exp2 = "Rube Goldberg machine deployed:";
     exp3 = "Escaped from the maze:";
     exp4 = "Pavlovian puzzle completed:";
